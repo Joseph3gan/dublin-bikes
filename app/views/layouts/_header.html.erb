@@ -1,0 +1,25 @@
+      <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+       <h4 id="logo">DublinBikes</h4>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Bikes", bikes_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <% if user_signed_in? %>
+            <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+            <li><%= link_to 'Log Out', destroy_user_session_path, :method => :delete %></li>
+            <li><%= link_to "Cart",  cart_path %></li>
+            <% else %>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Log In', new_user_session_path %></li>
+            <% end %>
+            <% if user_signed_in? %>
+            <% if current_user.id == 1 %>
+            <li><a href="/orders">Order History</a></li>
+            <% end %>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>

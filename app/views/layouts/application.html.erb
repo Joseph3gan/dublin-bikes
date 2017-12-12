@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RentBikesDublin</title>
+    <title><%= yield(:title) %> | Dublin Bikes</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,13 @@
   </head>
 
   <body>
-    <%= yield %>
+  <%= render 'layouts/header'%>
+  <div class="container">
+    <div id= 'content'>
+       <p class="notice"><%= flash[:notice] %></p>
+       <%= yield %>
+    </div>
+    </div>
+    <%= render 'layouts/footer'%>
   </body>
 </html>

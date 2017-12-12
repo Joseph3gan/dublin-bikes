@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @bike.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @bike.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @bike.price %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @bike.image_url %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @bike.duration %>
+</p>
+<% if user_signed_in? %>
+<% if current_user.id == 1 %>
+<%= link_to 'Edit', edit_bike_path(@bike) %> |
+<% end %>
+<% end %>
+<%= link_to 'Back', bikes_path %> | 
+<a href="/cart/<%= @bike.id %>">Add to cart</a>

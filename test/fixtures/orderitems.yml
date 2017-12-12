@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bike_id: 1
+  title: MyString
+  description: MyText
+  qantity: 1
+  price: 9.99
+  duration: MyString
+  order: one
+
+two:
+  bike_id: 1
+  title: MyString
+  description: MyText
+  qantity: 1
+  price: 9.99
+  duration: MyString
+  order: two

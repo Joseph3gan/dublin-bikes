@@ -1,0 +1,34 @@
+<h2>Thank you</h2>
+<p>You have just placed an order</p>
+
+<p><Strong>Order Reference: <%= @orders.id %></Strong></p>
+<table style="border: solid 1.5pt gray; border-collapse: collapse;">
+    <thead>
+        <tr style="border-bottom: solid 1.5pt gray; background-color: lightgray">
+            <td class="legend">Product</td>
+            <td class="legend">Price</td>
+            <td class="legend">Quantity</td>
+            <td class="legend">Total</td>
+        </tr>
+    </thead>
+        <tbody>
+            <% @total =0 %>
+            <% @orderitems.each do |id, quantity| %>
+                <tr>
+                <% bike = Orderitem.find_by_id(id) %>
+                
+                <td style="border: solid 1.5pt gray;"><%=bike.title%></td>
+                <td style="border: solid 1.5pt gray;"><%=number_to_currency(bike.price, :unit => "€") %></td>
+                <td style="border: solid 1.5pt gray;"><%=bike.qantity%></td>
+                <td style="border: solid 1.5pt gray;"><%=number_to_currency(bike.qantity * bike.price, :unit => "€") %></td>
+                
+                </tr>
+                
+                <% timx = (bike.qantity * bike.price) %>
+                <% @total += timx %>
+                <% end %>
+                
+                <trstyle="border: solid 1.5pt gray;"><td>Total: &euro; <%= @total %></td></tr>
+                
+        </tbody>
+</table>
