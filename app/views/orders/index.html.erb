@@ -2,6 +2,9 @@
 
 <h1>Orders</h1>
 
+<% if user_signed_in? %>
+<% if current_user.id == 1 %>
+
 <table>
   <thead>
     <tr>
@@ -31,3 +34,17 @@
 <br>
 
 <%= link_to 'New Order', new_order_path %>
+
+<% else %>
+
+<br>
+<h3 style="text-align: center">Dublin Rent Bike Staff Only Section.</h3>
+
+<% end %>
+
+<% else %>
+
+<br>
+<h3 style="text-align: center"><%= link_to 'You will need to login', new_user_session_path %></h3>
+
+<% end %>

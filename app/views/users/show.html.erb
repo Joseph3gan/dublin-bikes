@@ -1,0 +1,54 @@
+
+
+
+<div class ="UserProfile" style="text-align: left">
+    <div>
+    <h4> <strong></strong><%= @user.first_name %> <%=  @user.last_name %></strong></h4>
+    <h4> <strong>Username:</strong> <%= @user.username_string %></h4>
+    <h4> <strong>Birthday:</strong> <%= @user.birthday %></h4>
+    <h4> <strong>About:</strong> <%= @user.about %></h4>
+    </div>
+    
+    <% if user_signed_in? %>
+    <% if current_user.id == @user.id %>
+    <%= link_to 'Edit profile', edit_user_registration_path %>
+    <% end %>
+    <% end %>
+</div>
+
+
+<% if user_signed_in? %>
+<% if current_user.id == @user.id %>
+
+<h2 style="text-align: left">Orders</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order date</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.where(user_id: current_user.id).each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.status %></td>
+        <td><%= link_to 'Show', order %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% else %>
+
+<% end %>
+
+<% else %>
+
+<br>
+<h4 style="text-align: left"><%= link_to 'To view your order history please login', new_user_session_path %></h4>
+
+<% end %>

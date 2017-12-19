@@ -17,8 +17,11 @@ Rails.application.routes.draw do
   devise_for :users do
     resources:orders
   end
+  resources :users
   
   get '/checkout' => 'cart#createOrder'
+  
+  get '/paid' => 'static_pages#paid'
 
   get '/cart/index'
   
